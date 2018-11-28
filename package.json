@@ -1,0 +1,15 @@
+{
+	"name": "coursePlanner-1.0",
+	"version": "0.0.1",
+	"private": true,
+	"dependencies": {
+		"express": "*",
+		"mongoose": "*",
+		"ejs": "*",
+		"underscore": "*",
+		"bcrypt-nodejs": "*",
+		"connect-mongo": "*",
+		"path": "*",
+		"querystring": "*"
+	}
+}

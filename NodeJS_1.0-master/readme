@@ -1,6 +1,0 @@
-Node.js server to print the rows of a MySQL table to an HTML page on button click.
-
-It can be run as follows:
-node app.js
-
-Upon execution, when the address localhost:8888 is pinged, a webpage with a button is displayed on the browser. When this button is clicked, a MySQL table is displayed.
