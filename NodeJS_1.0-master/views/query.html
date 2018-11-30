@@ -1,0 +1,513 @@
+<html lang="en-US">
+
+<head>
+		<meta charset="utf-8">
+		<title>Register</title>
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Varela+Round">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/register.css">
+		<link rel="stylesheet" href="./css/bootstrap.css">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body onload="form1.reset();">
+		<div id="header">
+			<div id="headercenter">
+				<div id="logo">
+					<a href="/home">
+						<img src="images/MongoWeb.png" width="80px" height="60px" alt="Home" /><br/>
+						<h1>MongoWeb</h1>
+					</a>
+				</div>
+			</div>
+		</div>
+<div id="login">
+	<div class="container">
+			<div class="col-md-4 col-md-offset-7" style="margin-left:15%">
+				<div class="panel panel-default">
+					<div class="panel-heading">Your schedule</div>
+						<form id="form1" class="form-horizontal" role="form" method="POST" action="/register">
+	
+						<div class="form-group">
+							<label for="min_units" class="col-sm-4 control-label">Min. Credits Required</label> 
+							<div class="col-sm-8"> <input id="min_units" name="min_units" type = "text" class = "form-control"  placeholder="6" required></div>
+						</div>
+						  <div class="form-group">
+							<label for="cum_gpa" class="col-sm-4 control-label">Desired Cumulative GPA</label> 
+							<div class="col-sm-8">
+							  <input id="cum_gpa" name="cum_gpa" placeholder="4.0" type="text" class = "form-control"  required>
+							</div>
+						  </div>
+						  <div class="form-group">
+							<label for="graduating" class="control-label col-sm-4">Graduating?</label> 
+							<div class="col-sm-8">
+							  <select id="graduating" name="graduating" class = "select form-control" required>
+								<option value="yes">Yes          </option>
+								<option value="no">No              </option>
+							  </select>
+							</div>
+						  </div>
+						  <div class="form-group">
+							<label for="course1" class="control-label col-sm-4">Course 1</label> 
+							<div class="col-sm-8">
+							  <select id="course1" name="course1" class="select form-control">
+								<option value="Intro To Info Security">Intro To Info Security</option>
+								<option value="Adv Operating Systems">Adv Operating Systems</option>
+								<option value="Secure Computer Systems">Secure Computer Systems</option>
+								<option value="Compiler Design">Compiler Design</option>
+								<option value="Applied Cryptography">Applied Cryptography</option>
+								<option value="Network Security">Network Security</option>
+								<option value="High Perform Comput Arch">High Perform Comput Arch</option>
+								<option value="Adv Software Engineering">Adv Software Engineering</option>
+								<option value="Intro Enterprise Comput.">Intro Enterprise Comput.</option>
+								<option value="Database System Implemnt">Database System Implemnt</option>
+								<option value="Intro Health Informatics">Intro Health Informatics</option>
+								<option value="Educ Tech-Foundations">Educ Tech-Foundations</option>
+								<option value="Online Communities">Online Communities</option>
+								<option value="Comp. Photography">Comp. Photography</option>
+								<option value="Design& Analy-Algorithms">Design& Analy-Algorithms</option>
+								<option value="Advance Internet Comput">Advance Internet Comput</option>
+								<option value="Info Security Policies">Info Security Policies</option>
+								<option value="Info&Com Tech&Global Dev">Info&Com Tech&Global Dev</option>
+								<option value="Human-Computer Interact">Human-Computer Interact</option>
+								<option value="Intro-Cognitive Science">Intro-Cognitive Science</option>
+								<option value="Internet Arch& Protocols">Internet Arch& Protocols</option>
+								<option value="Issues/Human-Center Comp">Issues/Human-Center Comp</option>
+								<option value="Ubiquitous Computing">Ubiquitous Computing</option>
+								<option value="Simulation of Biology">Simulation of Biology</option>
+								<option value="Approximation Algorithms">Approximation Algorithms</option>
+								<option value="Game AI">Game AI</option>
+								<option value="Machine Learning">Machine Learning</option>
+								<option value="Deep Learning">Deep Learning</option>
+								<option value="Robot Intelli: Planning">Robot Intelli: Planning</option>
+								<option value="Special Topics Adaptive Control and RL">Special Topics Adaptive Control and RL</option>
+								<option value="Special Topics Blockchain and Cryptocurrencies">Special Topics Blockchain and Cryptocurrencies</option>
+								<option value="Special Topics Big Data and Society">Special Topics Big Data and Society</option>
+								<option value="Special Topics Continuous Algorithms">Special Topics Continuous Algorithms</option>
+								<option value="Special Topics Cyber-Phys Sys Design">Special Topics Cyber-Phys Sys Design</option>
+								<option value="Special Topics Human AI Interaction">Special Topics Human AI Interaction</option>
+								<option value="Special Topics Interconnection Networks Special Topics Interconnection Networks  ">Special Topics Interconnection Networks Special Topics Interconnection Networks</option>
+								<option value="Special Topics Inverse Uncertainty Quant">Special Topics Inverse Uncertainty Quant</option>
+								<option value="Special Topics Mobile Applications & Services">Special Topics Mobile Applications & Services</option>
+								<option value="Special Topics Graphical Models in ML">Special Topics Graphical Models in ML</option>
+								<option value="Special Topics Robotics Motion Planning">Special Topics Robotics Motion Planning</option>
+								<option value="Special Topics Systems Issues in Cloud Computing">Special Topics Systems Issues in Cloud Computing</option>
+								<option value="Special Topics Statistical Machine Learning">Special Topics Statistical Machine Learning</option>
+								<option value="Special Topics Sonification Lab R&D Studio">Special Topics Sonification Lab R&D Studio</option>
+								<option value="Special Topics Usable Privacy and Security Special Topics Usable Privacy and Security ">Special Topics Usable Privacy and Security Special Topics Usable Privacy and Security</option>
+								<option value="Intro to Grad Algorithms">Intro to Grad Algorithms</option>
+								<option value="Robotics Research Fnd I">Robotics Research Fnd I</option>
+								<option value="Robotics Research Fnd II">Robotics Research Fnd II</option>
+								<option value="Special Topics Data Visualization Prin & Appl">Special Topics Data Visualization Prin & Appl</option>
+							  </select>
+							</div>
+						  </div> 
+						  <div class="form-group">
+						  <label for="course2" class="control-label col-sm-4">Course 2</label> 
+						  <div class="col-sm-8">
+							<select id="course2" name="course2" class="select form-control">
+							  <option value="None">None</option>
+							  <option value="Intro To Info Security">Intro To Info Security</option>
+							  <option value="Adv Operating Systems">Adv Operating Systems</option>
+							  <option value="Secure Computer Systems">Secure Computer Systems</option>
+							  <option value="Compiler Design">Compiler Design</option>
+							  <option value="Applied Cryptography">Applied Cryptography</option>
+							  <option value="Network Security">Network Security</option>
+							  <option value="High Perform Comput Arch">High Perform Comput Arch</option>
+							  <option value="Adv Software Engineering">Adv Software Engineering</option>
+							  <option value="Intro Enterprise Comput.">Intro Enterprise Comput.</option>
+							  <option value="Database System Implemnt">Database System Implemnt</option>
+							  <option value="Intro Health Informatics">Intro Health Informatics</option>
+							  <option value="Educ Tech-Foundations">Educ Tech-Foundations</option>
+							  <option value="Online Communities">Online Communities</option>
+							  <option value="Comp. Photography">Comp. Photography</option>
+							  <option value="Design& Analy-Algorithms">Design& Analy-Algorithms</option>
+							  <option value="Advance Internet Comput">Advance Internet Comput</option>
+							  <option value="Info Security Policies">Info Security Policies</option>
+							  <option value="Info&Com Tech&Global Dev">Info&Com Tech&Global Dev</option>
+							  <option value="Human-Computer Interact">Human-Computer Interact</option>
+							  <option value="Intro-Cognitive Science">Intro-Cognitive Science</option>
+							  <option value="Internet Arch& Protocols">Internet Arch& Protocols</option>
+							  <option value="Issues/Human-Center Comp">Issues/Human-Center Comp</option>
+							  <option value="Ubiquitous Computing">Ubiquitous Computing</option>
+							  <option value="Simulation of Biology">Simulation of Biology</option>
+							  <option value="Approximation Algorithms">Approximation Algorithms</option>
+							  <option value="Game AI">Game AI</option>
+							  <option value="Machine Learning">Machine Learning</option>
+							  <option value="Deep Learning">Deep Learning</option>
+							  <option value="Robot Intelli: Planning">Robot Intelli: Planning</option>
+							  <option value="Special Topics Adaptive Control and RL">Special Topics Adaptive Control and RL</option>
+							  <option value="Special Topics Blockchain and Cryptocurrencies">Special Topics Blockchain and Cryptocurrencies</option>
+							  <option value="Special Topics Big Data and Society">Special Topics Big Data and Society</option>
+							  <option value="Special Topics Continuous Algorithms">Special Topics Continuous Algorithms</option>
+							  <option value="Special Topics Cyber-Phys Sys Design">Special Topics Cyber-Phys Sys Design</option>
+							  <option value="Special Topics Human AI Interaction">Special Topics Human AI Interaction</option>
+							  <option value="Special Topics Interconnection Networks Special Topics Interconnection Networks  ">Special Topics Interconnection Networks Special Topics Interconnection Networks</option>
+							  <option value="Special Topics Inverse Uncertainty Quant">Special Topics Inverse Uncertainty Quant</option>
+							  <option value="Special Topics Mobile Applications & Services">Special Topics Mobile Applications & Services</option>
+							  <option value="Special Topics Graphical Models in ML">Special Topics Graphical Models in ML</option>
+							  <option value="Special Topics Robotics Motion Planning">Special Topics Robotics Motion Planning</option>
+							  <option value="Special Topics Systems Issues in Cloud Computing">Special Topics Systems Issues in Cloud Computing</option>
+							  <option value="Special Topics Statistical Machine Learning">Special Topics Statistical Machine Learning</option>
+							  <option value="Special Topics Sonification Lab R&D Studio">Special Topics Sonification Lab R&D Studio</option>
+							  <option value="Special Topics Usable Privacy and Security Special Topics Usable Privacy and Security ">Special Topics Usable Privacy and Security Special Topics Usable Privacy and Security</option>
+							  <option value="Intro to Grad Algorithms">Intro to Grad Algorithms</option>
+							  <option value="Robotics Research Fnd I">Robotics Research Fnd I</option>
+							  <option value="Robotics Research Fnd II">Robotics Research Fnd II</option>
+							  <option value="Special Topics Data Visualization Prin & Appl">Special Topics Data Visualization Prin & Appl</option>
+							</select>
+						  </div>
+						</div> 
+						  <div class="form-group">
+							<label for="course3" class="control-label col-sm-4">Course 3</label> 
+							<div class="col-sm-8">
+							  <select id="course3" name="course3" class="select form-control">
+							  <option value="None">None</option>
+								<option value="Intro To Info Security">Intro To Info Security</option>
+								<option value="Adv Operating Systems">Adv Operating Systems</option>
+								<option value="Secure Computer Systems">Secure Computer Systems</option>
+								<option value="Compiler Design">Compiler Design</option>
+								<option value="Applied Cryptography">Applied Cryptography</option>
+								<option value="Network Security">Network Security</option>
+								<option value="High Perform Comput Arch">High Perform Comput Arch</option>
+								<option value="Adv Software Engineering">Adv Software Engineering</option>
+								<option value="Intro Enterprise Comput.">Intro Enterprise Comput.</option>
+								<option value="Database System Implemnt">Database System Implemnt</option>
+								<option value="Intro Health Informatics">Intro Health Informatics</option>
+								<option value="Educ Tech-Foundations">Educ Tech-Foundations</option>
+								<option value="Online Communities">Online Communities</option>
+								<option value="Comp. Photography">Comp. Photography</option>
+								<option value="Design& Analy-Algorithms">Design& Analy-Algorithms</option>
+								<option value="Advance Internet Comput">Advance Internet Comput</option>
+								<option value="Info Security Policies">Info Security Policies</option>
+								<option value="Info&Com Tech&Global Dev">Info&Com Tech&Global Dev</option>
+								<option value="Human-Computer Interact">Human-Computer Interact</option>
+								<option value="Intro-Cognitive Science">Intro-Cognitive Science</option>
+								<option value="Internet Arch& Protocols">Internet Arch& Protocols</option>
+								<option value="Issues/Human-Center Comp">Issues/Human-Center Comp</option>
+								<option value="Ubiquitous Computing">Ubiquitous Computing</option>
+								<option value="Simulation of Biology">Simulation of Biology</option>
+								<option value="Approximation Algorithms">Approximation Algorithms</option>
+								<option value="Game AI">Game AI</option>
+								<option value="Machine Learning">Machine Learning</option>
+								<option value="Deep Learning">Deep Learning</option>
+								<option value="Robot Intelli: Planning">Robot Intelli: Planning</option>
+								<option value="Special Topics Adaptive Control and RL">Special Topics Adaptive Control and RL</option>
+								<option value="Special Topics Blockchain and Cryptocurrencies">Special Topics Blockchain and Cryptocurrencies</option>
+								<option value="Special Topics Big Data and Society">Special Topics Big Data and Society</option>
+								<option value="Special Topics Continuous Algorithms">Special Topics Continuous Algorithms</option>
+								<option value="Special Topics Cyber-Phys Sys Design">Special Topics Cyber-Phys Sys Design</option>
+								<option value="Special Topics Human AI Interaction">Special Topics Human AI Interaction</option>
+								<option value="Special Topics Interconnection Networks Special Topics Interconnection Networks  ">Special Topics Interconnection Networks Special Topics Interconnection Networks</option>
+								<option value="Special Topics Inverse Uncertainty Quant">Special Topics Inverse Uncertainty Quant</option>
+								<option value="Special Topics Mobile Applications & Services">Special Topics Mobile Applications & Services</option>
+								<option value="Special Topics Graphical Models in ML">Special Topics Graphical Models in ML</option>
+								<option value="Special Topics Robotics Motion Planning">Special Topics Robotics Motion Planning</option>
+								<option value="Special Topics Systems Issues in Cloud Computing">Special Topics Systems Issues in Cloud Computing</option>
+								<option value="Special Topics Statistical Machine Learning">Special Topics Statistical Machine Learning</option>
+								<option value="Special Topics Sonification Lab R&D Studio">Special Topics Sonification Lab R&D Studio</option>
+								<option value="Special Topics Usable Privacy and Security Special Topics Usable Privacy and Security ">Special Topics Usable Privacy and Security Special Topics Usable Privacy and Security</option>
+								<option value="Intro to Grad Algorithms">Intro to Grad Algorithms</option>
+								<option value="Robotics Research Fnd I">Robotics Research Fnd I</option>
+								<option value="Robotics Research Fnd II">Robotics Research Fnd II</option>
+								<option value="Special Topics Data Visualization Prin & Appl">Special Topics Data Visualization Prin & Appl</option>
+							  </select>
+							</div>
+						  </div> 
+						   <div class="form-group">
+							<label for="course4" class="control-label col-sm-4">Course 4</label> 
+							<div class="col-sm-8">
+							  <select id="course4" name="course4" class="select form-control">
+							  <option value="None">None</option>
+								<option value="Intro To Info Security">Intro To Info Security</option>
+								<option value="Adv Operating Systems">Adv Operating Systems</option>
+								<option value="Secure Computer Systems">Secure Computer Systems</option>
+								<option value="Compiler Design">Compiler Design</option>
+								<option value="Applied Cryptography">Applied Cryptography</option>
+								<option value="Network Security">Network Security</option>
+								<option value="High Perform Comput Arch">High Perform Comput Arch</option>
+								<option value="Adv Software Engineering">Adv Software Engineering</option>
+								<option value="Intro Enterprise Comput.">Intro Enterprise Comput.</option>
+								<option value="Database System Implemnt">Database System Implemnt</option>
+								<option value="Intro Health Informatics">Intro Health Informatics</option>
+								<option value="Educ Tech-Foundations">Educ Tech-Foundations</option>
+								<option value="Online Communities">Online Communities</option>
+								<option value="Comp. Photography">Comp. Photography</option>
+								<option value="Design& Analy-Algorithms">Design& Analy-Algorithms</option>
+								<option value="Advance Internet Comput">Advance Internet Comput</option>
+								<option value="Info Security Policies">Info Security Policies</option>
+								<option value="Info&Com Tech&Global Dev">Info&Com Tech&Global Dev</option>
+								<option value="Human-Computer Interact">Human-Computer Interact</option>
+								<option value="Intro-Cognitive Science">Intro-Cognitive Science</option>
+								<option value="Internet Arch& Protocols">Internet Arch& Protocols</option>
+								<option value="Issues/Human-Center Comp">Issues/Human-Center Comp</option>
+								<option value="Ubiquitous Computing">Ubiquitous Computing</option>
+								<option value="Simulation of Biology">Simulation of Biology</option>
+								<option value="Approximation Algorithms">Approximation Algorithms</option>
+								<option value="Game AI">Game AI</option>
+								<option value="Machine Learning">Machine Learning</option>
+								<option value="Deep Learning">Deep Learning</option>
+								<option value="Robot Intelli: Planning">Robot Intelli: Planning</option>
+								<option value="Special Topics Adaptive Control and RL">Special Topics Adaptive Control and RL</option>
+								<option value="Special Topics Blockchain and Cryptocurrencies">Special Topics Blockchain and Cryptocurrencies</option>
+								<option value="Special Topics Big Data and Society">Special Topics Big Data and Society</option>
+								<option value="Special Topics Continuous Algorithms">Special Topics Continuous Algorithms</option>
+								<option value="Special Topics Cyber-Phys Sys Design">Special Topics Cyber-Phys Sys Design</option>
+								<option value="Special Topics Human AI Interaction">Special Topics Human AI Interaction</option>
+								<option value="Special Topics Interconnection Networks Special Topics Interconnection Networks  ">Special Topics Interconnection Networks Special Topics Interconnection Networks</option>
+								<option value="Special Topics Inverse Uncertainty Quant">Special Topics Inverse Uncertainty Quant</option>
+								<option value="Special Topics Mobile Applications & Services">Special Topics Mobile Applications & Services</option>
+								<option value="Special Topics Graphical Models in ML">Special Topics Graphical Models in ML</option>
+								<option value="Special Topics Robotics Motion Planning">Special Topics Robotics Motion Planning</option>
+								<option value="Special Topics Systems Issues in Cloud Computing">Special Topics Systems Issues in Cloud Computing</option>
+								<option value="Special Topics Statistical Machine Learning">Special Topics Statistical Machine Learning</option>
+								<option value="Special Topics Sonification Lab R&D Studio">Special Topics Sonification Lab R&D Studio</option>
+								<option value="Special Topics Usable Privacy and Security Special Topics Usable Privacy and Security ">Special Topics Usable Privacy and Security Special Topics Usable Privacy and Security</option>
+								<option value="Intro to Grad Algorithms">Intro to Grad Algorithms</option>
+								<option value="Robotics Research Fnd I">Robotics Research Fnd I</option>
+								<option value="Robotics Research Fnd II">Robotics Research Fnd II</option>
+								<option value="Special Topics Data Visualization Prin & Appl">Special Topics Data Visualization Prin & Appl</option>
+							  </select>
+							</div>
+						  </div> 
+						   <div class="form-group">
+							<label for="course4" class="control-label col-sm-4">Course 4</label> 
+							<div class="col-sm-8">
+							  <select id="course4" name="course4" class="select form-control">
+							  <option value="None">None</option>
+								<option value="Intro To Info Security">Intro To Info Security</option>
+								<option value="Adv Operating Systems">Adv Operating Systems</option>
+								<option value="Secure Computer Systems">Secure Computer Systems</option>
+								<option value="Compiler Design">Compiler Design</option>
+								<option value="Applied Cryptography">Applied Cryptography</option>
+								<option value="Network Security">Network Security</option>
+								<option value="High Perform Comput Arch">High Perform Comput Arch</option>
+								<option value="Adv Software Engineering">Adv Software Engineering</option>
+								<option value="Intro Enterprise Comput.">Intro Enterprise Comput.</option>
+								<option value="Database System Implemnt">Database System Implemnt</option>
+								<option value="Intro Health Informatics">Intro Health Informatics</option>
+								<option value="Educ Tech-Foundations">Educ Tech-Foundations</option>
+								<option value="Online Communities">Online Communities</option>
+								<option value="Comp. Photography">Comp. Photography</option>
+								<option value="Design& Analy-Algorithms">Design& Analy-Algorithms</option>
+								<option value="Advance Internet Comput">Advance Internet Comput</option>
+								<option value="Info Security Policies">Info Security Policies</option>
+								<option value="Info&Com Tech&Global Dev">Info&Com Tech&Global Dev</option>
+								<option value="Human-Computer Interact">Human-Computer Interact</option>
+								<option value="Intro-Cognitive Science">Intro-Cognitive Science</option>
+								<option value="Internet Arch& Protocols">Internet Arch& Protocols</option>
+								<option value="Issues/Human-Center Comp">Issues/Human-Center Comp</option>
+								<option value="Ubiquitous Computing">Ubiquitous Computing</option>
+								<option value="Simulation of Biology">Simulation of Biology</option>
+								<option value="Approximation Algorithms">Approximation Algorithms</option>
+								<option value="Game AI">Game AI</option>
+								<option value="Machine Learning">Machine Learning</option>
+								<option value="Deep Learning">Deep Learning</option>
+								<option value="Robot Intelli: Planning">Robot Intelli: Planning</option>
+								<option value="Special Topics Adaptive Control and RL">Special Topics Adaptive Control and RL</option>
+								<option value="Special Topics Blockchain and Cryptocurrencies">Special Topics Blockchain and Cryptocurrencies</option>
+								<option value="Special Topics Big Data and Society">Special Topics Big Data and Society</option>
+								<option value="Special Topics Continuous Algorithms">Special Topics Continuous Algorithms</option>
+								<option value="Special Topics Cyber-Phys Sys Design">Special Topics Cyber-Phys Sys Design</option>
+								<option value="Special Topics Human AI Interaction">Special Topics Human AI Interaction</option>
+								<option value="Special Topics Interconnection Networks Special Topics Interconnection Networks  ">Special Topics Interconnection Networks Special Topics Interconnection Networks</option>
+								<option value="Special Topics Inverse Uncertainty Quant">Special Topics Inverse Uncertainty Quant</option>
+								<option value="Special Topics Mobile Applications & Services">Special Topics Mobile Applications & Services</option>
+								<option value="Special Topics Graphical Models in ML">Special Topics Graphical Models in ML</option>
+								<option value="Special Topics Robotics Motion Planning">Special Topics Robotics Motion Planning</option>
+								<option value="Special Topics Systems Issues in Cloud Computing">Special Topics Systems Issues in Cloud Computing</option>
+								<option value="Special Topics Statistical Machine Learning">Special Topics Statistical Machine Learning</option>
+								<option value="Special Topics Sonification Lab R&D Studio">Special Topics Sonification Lab R&D Studio</option>
+								<option value="Special Topics Usable Privacy and Security Special Topics Usable Privacy and Security ">Special Topics Usable Privacy and Security Special Topics Usable Privacy and Security</option>
+								<option value="Intro to Grad Algorithms">Intro to Grad Algorithms</option>
+								<option value="Robotics Research Fnd I">Robotics Research Fnd I</option>
+								<option value="Robotics Research Fnd II">Robotics Research Fnd II</option>
+								<option value="Special Topics Data Visualization Prin & Appl">Special Topics Data Visualization Prin & Appl</option>
+							  </select>
+							</div>
+						  </div> 
+						   <div class="form-group">
+							<label for="course5" class="control-label col-sm-4">Course 5</label> 
+							<div class="col-sm-8">
+							  <select id="course5" name="course5" class="select form-control">
+							  <option value="None">None</option>
+								<option value="Intro To Info Security">Intro To Info Security</option>
+								<option value="Adv Operating Systems">Adv Operating Systems</option>
+								<option value="Secure Computer Systems">Secure Computer Systems</option>
+								<option value="Compiler Design">Compiler Design</option>
+								<option value="Applied Cryptography">Applied Cryptography</option>
+								<option value="Network Security">Network Security</option>
+								<option value="High Perform Comput Arch">High Perform Comput Arch</option>
+								<option value="Adv Software Engineering">Adv Software Engineering</option>
+								<option value="Intro Enterprise Comput.">Intro Enterprise Comput.</option>
+								<option value="Database System Implemnt">Database System Implemnt</option>
+								<option value="Intro Health Informatics">Intro Health Informatics</option>
+								<option value="Educ Tech-Foundations">Educ Tech-Foundations</option>
+								<option value="Online Communities">Online Communities</option>
+								<option value="Comp. Photography">Comp. Photography</option>
+								<option value="Design& Analy-Algorithms">Design& Analy-Algorithms</option>
+								<option value="Advance Internet Comput">Advance Internet Comput</option>
+								<option value="Info Security Policies">Info Security Policies</option>
+								<option value="Info&Com Tech&Global Dev">Info&Com Tech&Global Dev</option>
+								<option value="Human-Computer Interact">Human-Computer Interact</option>
+								<option value="Intro-Cognitive Science">Intro-Cognitive Science</option>
+								<option value="Internet Arch& Protocols">Internet Arch& Protocols</option>
+								<option value="Issues/Human-Center Comp">Issues/Human-Center Comp</option>
+								<option value="Ubiquitous Computing">Ubiquitous Computing</option>
+								<option value="Simulation of Biology">Simulation of Biology</option>
+								<option value="Approximation Algorithms">Approximation Algorithms</option>
+								<option value="Game AI">Game AI</option>
+								<option value="Machine Learning">Machine Learning</option>
+								<option value="Deep Learning">Deep Learning</option>
+								<option value="Robot Intelli: Planning">Robot Intelli: Planning</option>
+								<option value="Special Topics Adaptive Control and RL">Special Topics Adaptive Control and RL</option>
+								<option value="Special Topics Blockchain and Cryptocurrencies">Special Topics Blockchain and Cryptocurrencies</option>
+								<option value="Special Topics Big Data and Society">Special Topics Big Data and Society</option>
+								<option value="Special Topics Continuous Algorithms">Special Topics Continuous Algorithms</option>
+								<option value="Special Topics Cyber-Phys Sys Design">Special Topics Cyber-Phys Sys Design</option>
+								<option value="Special Topics Human AI Interaction">Special Topics Human AI Interaction</option>
+								<option value="Special Topics Interconnection Networks Special Topics Interconnection Networks  ">Special Topics Interconnection Networks Special Topics Interconnection Networks</option>
+								<option value="Special Topics Inverse Uncertainty Quant">Special Topics Inverse Uncertainty Quant</option>
+								<option value="Special Topics Mobile Applications & Services">Special Topics Mobile Applications & Services</option>
+								<option value="Special Topics Graphical Models in ML">Special Topics Graphical Models in ML</option>
+								<option value="Special Topics Robotics Motion Planning">Special Topics Robotics Motion Planning</option>
+								<option value="Special Topics Systems Issues in Cloud Computing">Special Topics Systems Issues in Cloud Computing</option>
+								<option value="Special Topics Statistical Machine Learning">Special Topics Statistical Machine Learning</option>
+								<option value="Special Topics Sonification Lab R&D Studio">Special Topics Sonification Lab R&D Studio</option>
+								<option value="Special Topics Usable Privacy and Security Special Topics Usable Privacy and Security ">Special Topics Usable Privacy and Security Special Topics Usable Privacy and Security</option>
+								<option value="Intro to Grad Algorithms">Intro to Grad Algorithms</option>
+								<option value="Robotics Research Fnd I">Robotics Research Fnd I</option>
+								<option value="Robotics Research Fnd II">Robotics Research Fnd II</option>
+								<option value="Special Topics Data Visualization Prin & Appl">Special Topics Data Visualization Prin & Appl</option>
+							  </select>
+							</div>
+						  </div> 
+						   <div class="form-group">
+							<label for="course6" class="control-label col-sm-4">Course 6</label> 
+							<div class="col-sm-8">
+							  <select id="course6" name="course6" class="select form-control">
+							  <option value="None">None</option>
+								<option value="Intro To Info Security">Intro To Info Security</option>
+								<option value="Adv Operating Systems">Adv Operating Systems</option>
+								<option value="Secure Computer Systems">Secure Computer Systems</option>
+								<option value="Compiler Design">Compiler Design</option>
+								<option value="Applied Cryptography">Applied Cryptography</option>
+								<option value="Network Security">Network Security</option>
+								<option value="High Perform Comput Arch">High Perform Comput Arch</option>
+								<option value="Adv Software Engineering">Adv Software Engineering</option>
+								<option value="Intro Enterprise Comput.">Intro Enterprise Comput.</option>
+								<option value="Database System Implemnt">Database System Implemnt</option>
+								<option value="Intro Health Informatics">Intro Health Informatics</option>
+								<option value="Educ Tech-Foundations">Educ Tech-Foundations</option>
+								<option value="Online Communities">Online Communities</option>
+								<option value="Comp. Photography">Comp. Photography</option>
+								<option value="Design& Analy-Algorithms">Design& Analy-Algorithms</option>
+								<option value="Advance Internet Comput">Advance Internet Comput</option>
+								<option value="Info Security Policies">Info Security Policies</option>
+								<option value="Info&Com Tech&Global Dev">Info&Com Tech&Global Dev</option>
+								<option value="Human-Computer Interact">Human-Computer Interact</option>
+								<option value="Intro-Cognitive Science">Intro-Cognitive Science</option>
+								<option value="Internet Arch& Protocols">Internet Arch& Protocols</option>
+								<option value="Issues/Human-Center Comp">Issues/Human-Center Comp</option>
+								<option value="Ubiquitous Computing">Ubiquitous Computing</option>
+								<option value="Simulation of Biology">Simulation of Biology</option>
+								<option value="Approximation Algorithms">Approximation Algorithms</option>
+								<option value="Game AI">Game AI</option>
+								<option value="Machine Learning">Machine Learning</option>
+								<option value="Deep Learning">Deep Learning</option>
+								<option value="Robot Intelli: Planning">Robot Intelli: Planning</option>
+								<option value="Special Topics Adaptive Control and RL">Special Topics Adaptive Control and RL</option>
+								<option value="Special Topics Blockchain and Cryptocurrencies">Special Topics Blockchain and Cryptocurrencies</option>
+								<option value="Special Topics Big Data and Society">Special Topics Big Data and Society</option>
+								<option value="Special Topics Continuous Algorithms">Special Topics Continuous Algorithms</option>
+								<option value="Special Topics Cyber-Phys Sys Design">Special Topics Cyber-Phys Sys Design</option>
+								<option value="Special Topics Human AI Interaction">Special Topics Human AI Interaction</option>
+								<option value="Special Topics Interconnection Networks Special Topics Interconnection Networks  ">Special Topics Interconnection Networks Special Topics Interconnection Networks</option>
+								<option value="Special Topics Inverse Uncertainty Quant">Special Topics Inverse Uncertainty Quant</option>
+								<option value="Special Topics Mobile Applications & Services">Special Topics Mobile Applications & Services</option>
+								<option value="Special Topics Graphical Models in ML">Special Topics Graphical Models in ML</option>
+								<option value="Special Topics Robotics Motion Planning">Special Topics Robotics Motion Planning</option>
+								<option value="Special Topics Systems Issues in Cloud Computing">Special Topics Systems Issues in Cloud Computing</option>
+								<option value="Special Topics Statistical Machine Learning">Special Topics Statistical Machine Learning</option>
+								<option value="Special Topics Sonification Lab R&D Studio">Special Topics Sonification Lab R&D Studio</option>
+								<option value="Special Topics Usable Privacy and Security Special Topics Usable Privacy and Security ">Special Topics Usable Privacy and Security Special Topics Usable Privacy and Security</option>
+								<option value="Intro to Grad Algorithms">Intro to Grad Algorithms</option>
+								<option value="Robotics Research Fnd I">Robotics Research Fnd I</option>
+								<option value="Robotics Research Fnd II">Robotics Research Fnd II</option>
+								<option value="Special Topics Data Visualization Prin & Appl">Special Topics Data Visualization Prin & Appl</option>
+							  </select>
+							</div>
+						  </div> 
+						   <div class="form-group">
+							<label for="course7" class="control-label col-sm-4">Course 7</label> 
+							<div class="col-sm-8">
+							  <select id="course7" name="course7" class="select form-control">
+							  <option value="None">None</option>
+								<option value="Intro To Info Security">Intro To Info Security</option>
+								<option value="Adv Operating Systems">Adv Operating Systems</option>
+								<option value="Secure Computer Systems">Secure Computer Systems</option>
+								<option value="Compiler Design">Compiler Design</option>
+								<option value="Applied Cryptography">Applied Cryptography</option>
+								<option value="Network Security">Network Security</option>
+								<option value="High Perform Comput Arch">High Perform Comput Arch</option>
+								<option value="Adv Software Engineering">Adv Software Engineering</option>
+								<option value="Intro Enterprise Comput.">Intro Enterprise Comput.</option>
+								<option value="Database System Implemnt">Database System Implemnt</option>
+								<option value="Intro Health Informatics">Intro Health Informatics</option>
+								<option value="Educ Tech-Foundations">Educ Tech-Foundations</option>
+								<option value="Online Communities">Online Communities</option>
+								<option value="Comp. Photography">Comp. Photography</option>
+								<option value="Design& Analy-Algorithms">Design& Analy-Algorithms</option>
+								<option value="Advance Internet Comput">Advance Internet Comput</option>
+								<option value="Info Security Policies">Info Security Policies</option>
+								<option value="Info&Com Tech&Global Dev">Info&Com Tech&Global Dev</option>
+								<option value="Human-Computer Interact">Human-Computer Interact</option>
+								<option value="Intro-Cognitive Science">Intro-Cognitive Science</option>
+								<option value="Internet Arch& Protocols">Internet Arch& Protocols</option>
+								<option value="Issues/Human-Center Comp">Issues/Human-Center Comp</option>
+								<option value="Ubiquitous Computing">Ubiquitous Computing</option>
+								<option value="Simulation of Biology">Simulation of Biology</option>
+								<option value="Approximation Algorithms">Approximation Algorithms</option>
+								<option value="Game AI">Game AI</option>
+								<option value="Machine Learning">Machine Learning</option>
+								<option value="Deep Learning">Deep Learning</option>
+								<option value="Robot Intelli: Planning">Robot Intelli: Planning</option>
+								<option value="Special Topics Adaptive Control and RL">Special Topics Adaptive Control and RL</option>
+								<option value="Special Topics Blockchain and Cryptocurrencies">Special Topics Blockchain and Cryptocurrencies</option>
+								<option value="Special Topics Big Data and Society">Special Topics Big Data and Society</option>
+								<option value="Special Topics Continuous Algorithms">Special Topics Continuous Algorithms</option>
+								<option value="Special Topics Cyber-Phys Sys Design">Special Topics Cyber-Phys Sys Design</option>
+								<option value="Special Topics Human AI Interaction">Special Topics Human AI Interaction</option>
+								<option value="Special Topics Interconnection Networks Special Topics Interconnection Networks  ">Special Topics Interconnection Networks Special Topics Interconnection Networks</option>
+								<option value="Special Topics Inverse Uncertainty Quant">Special Topics Inverse Uncertainty Quant</option>
+								<option value="Special Topics Mobile Applications & Services">Special Topics Mobile Applications & Services</option>
+								<option value="Special Topics Graphical Models in ML">Special Topics Graphical Models in ML</option>
+								<option value="Special Topics Robotics Motion Planning">Special Topics Robotics Motion Planning</option>
+								<option value="Special Topics Systems Issues in Cloud Computing">Special Topics Systems Issues in Cloud Computing</option>
+								<option value="Special Topics Statistical Machine Learning">Special Topics Statistical Machine Learning</option>
+								<option value="Special Topics Sonification Lab R&D Studio">Special Topics Sonification Lab R&D Studio</option>
+								<option value="Special Topics Usable Privacy and Security Special Topics Usable Privacy and Security ">Special Topics Usable Privacy and Security Special Topics Usable Privacy and Security</option>
+								<option value="Intro to Grad Algorithms">Intro to Grad Algorithms</option>
+								<option value="Robotics Research Fnd I">Robotics Research Fnd I</option>
+								<option value="Robotics Research Fnd II">Robotics Research Fnd II</option>
+								<option value="Special Topics Data Visualization Prin & Appl">Special Topics Data Visualization Prin & Appl</option>
+							  </select>
+							</div>
+						  </div> 
+						 
+						  <div class="form-group row">
+							<div class="col-xs-offset-4 col-xs-8">
+							  <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+							</div>
+						  </div>
+						</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+				<script type="text/javascript" src="./scripts/bootstrap.min.js"></script>
+	</body>
+
+</html>

@@ -2,20 +2,17 @@
 
 var mysql = require("mysql");
 var express = require("express");
-var path = require("path");
-var SERVER_PORT = 8888;
+var config = require("./config/config.js");
+var mysqlController = require("./controllers/mysql.js");
 
 var app = express();
 app.use(express.static(__dirname + "/views")); 
 
-var connection = mysql.createConnection({
-   host: 'localhost',
-   user: 'root',
-   password: 'password',
-   database: 'coursePlanner'
-});
-connection.connect();
+//var connection = mysql.createConnection(config.dbOptions);
+//connection.connect();
 
+require("./config/express.js")(app, config);
+/*
 app.get('/', function(req, res) {
    res.redirect("home");
 });
@@ -23,8 +20,8 @@ app.get('/', function(req, res) {
 app.get("/home", function(req, res, next) {
    res.sendFile("home.html", {root: "./views/"});
 });
-
-app.get("/inputQuery", function(req, res) {
+*/
+/*app.get("/inputQuery", function(req, res) {
    connection.query('create view newview as (select * from courses where prof = \'Gavrilovska\')', function(err, rows, fs) {
       if(err) {
          console.log('Something is broken');
@@ -49,6 +46,24 @@ app.get("/inputQuery", function(req, res) {
       }
    });
 });
+*/
 
-app.listen(process.env.PORT || SERVER_PORT);
-console.log("Mysql server up and running at --> " + SERVER_PORT);
+app.get('/', function(req, res){
+		res.redirect("login");
+	});
+
+//Serving pages
+app.get("/login", mysqlController.loginPage);
+app.get("/register", mysqlController.registerPage);
+app.get("/home", mysqlController.authenticate, mysqlController.home);
+
+//Posts
+app.post("/login", mysqlController.login);
+app.post("/logout", mysqlController.logout);
+app.post("/register", mysqlController.register);
+
+app.get("/testPage", mysqlController.testPage);
+
+app.get("/inputQuery", mysqlController.inputQuery);
+app.listen(config.SERVER_PORT);
+console.log("Mysql server up and running at --> " + config.SERVER_PORT);
