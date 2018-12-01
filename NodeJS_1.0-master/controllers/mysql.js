@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 var mysqlController = {
 
     inputQuery: function(req, res) {
+                    console.log(req.body);
                     config.connection.query('create view newview as (select * from courses where prof = \'Gavrilovska\')', function(err, rows, fs) {
                         if(err) {
                             console.log('Something is broken');
@@ -84,8 +85,6 @@ var mysqlController = {
                         }
 			            if (rows.length == 1) {
                             var pw = rows[0].password;
-                            console.log(pw);
-                            console.log(password);
                             bcrypt.compare(password, rows[0].password, function(err, nres) 
                             {
                                 if (nres)
@@ -111,7 +110,7 @@ var mysqlController = {
 	        },
 
 	home: function(req, res){
-		res.sendFile("home.html", {root: "./views/"});
+		res.sendFile("home2.html", {root: "./views/"});
 	},
     
     testPage: function(req, res) {
@@ -124,7 +123,6 @@ var mysqlController = {
 	},
 
 	register: function(req, res){
-        console.log(req.body);
 		var username = req.body.username || "";
 		var password = req.body.password || "";
 		var specialization = req.body.specialization || "";
@@ -171,7 +169,6 @@ var mysqlController = {
                                 list.push(req.body[prop]);
                                 if (count == mycount + 2)
                                 {
-                                    console.log(count, mycount, list);
                                     var query = mysql.format('insert into taken values (?, ?, ?, ?)', list);
                                     config.connection.query(query, function(err, rows, fs) {
                                         if(err) {

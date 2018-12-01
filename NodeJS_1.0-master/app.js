@@ -64,6 +64,6 @@ app.post("/register", mysqlController.register);
 
 app.get("/testPage", mysqlController.testPage);
 
-app.get("/inputQuery", mysqlController.inputQuery);
+app.post("/inputQuery", mysqlController.inputQuery);
 app.listen(config.SERVER_PORT);
 console.log("Mysql server up and running at --> " + config.SERVER_PORT);

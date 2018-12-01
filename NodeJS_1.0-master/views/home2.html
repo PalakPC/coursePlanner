@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en-US">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Register</title>
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Varela+Round">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/register.css">
+		<link rel="stylesheet" href="./css/bootstrap.css">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script>
+        $(document).ready(function(){
+            var options = ["None","Intro To Info Security","Adv Operating Systems","Secure Computer Systems","Compiler Design","Applied Cryptography","Network Security","High Perform Comput Arch","Adv Software Engineering","Intro Enterprise Comput.","Database System Implemnt","Intro Health Informatics","Educ Tech-Foundations","Online Communities","Comp. Photography","Design& Analy-Algorithms","Advance Internet Comput","Info Security Policies","Info&Com Tech&Global Dev","Human-Computer Interact","Intro-Cognitive Science","Internet Arch& Protocols","Issues/Human-Center Comp","Ubiquitous Computing","Simulation of Biology","Approximation Algorithms","Game AI","Machine Learning","Deep Learning","Robot Intelli: Planning","Special Topics Adaptive Control and RL","Special Topics Blockchain and Cryptocurrencies","Special Topics Big Data and Society","Special Topics Continuous Algorithms","Special Topics Cyber-Phys Sys Design","Special Topics Human AI Interaction","Special Topics Interconnection Networks","Special Topics Inverse Uncertainty Quant","Special Topics Mobile Applications & Services","Special Topics Graphical Models in ML","Special Topics Robotics Motion Planning","Special Topics Systems Issues in Cloud Computing","Special Topics Statistical Machine Learning","Special Topics Sonification Lab R&D Studio","Special Topics Usable Privacy and Security","Intro to Grad Algorithms","Robotics Research Fnd I","Robotics Research Fnd II","Special Topics Data Visualization Prin & Appl"];
+
+            $('.selectlist').empty();
+
+            $.each(options, function(i, p) {
+                $('.selectlist').append($('<option></option>').val(p).html(p));
+            });
+        });
+
+        </script>
+
+	</head>
+
+	<body onload="form1.reset();">
+		<div id="header">
+			<div id="headercenter">
+				<div id="logo">
+					<a href="/home">
+						<img src="images/MongoWeb.png" width="80px" height="60px" alt="MongoWeb" /><br/>
+						<h1>MongoWeb</h1>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div id="login">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9 col-md-offset-7" style="margin-left:10%">
+						<div class="panel panel-default">
+							<div class="panel-heading">Schedule</div>
+							<form id="form1" class="form-horizontal" role="form" method="POST" action="/inputQuery">
+								<div class="panel-body">
+									<div class="form-group">
+										<label for="inputUsername" class="col-sm-4 control-label">Minimum Credits Required</label>
+										<div class="col-sm-4"><input name="credits" type="number" class="form-control" id="credits" min=3 max=21 placeholder="credits" required></div>
+									</div>
+									<div class="form-group">
+										<label for="inputUsername" class="col-sm-4 control-label">Desired Cumulative GPA</label>
+										<div class="col-sm-4"><input name="gpa" type="number" class="form-control" id="gpa" min=0 max=4 step=0.01 placeholder="gpa" required></div>
+									</div>
+									<div class="form-group">
+										<label for="inputUsername" class="col-sm-4 control-label">Graduating </label>
+										<div class="col-sm-1"><input class="form-control" name="graduation" type="checkbox" id="graduation" style="width: 20px; height: 20px" value=1></div>
+									</div>
+                                    <hr>
+							        <div class="panel-heading col-sm-offset-1" style="font-size: 18px"><b>Courses:</b></div>
+                                    <hr>
+                                    <div class="form-group">
+								        <label for="inputUsername" class="col-sm-4 control-label">Course 1</label>
+										<div class="col-sm-4"><select name="select1" class="form-control selectlist" id="select1"></select></div>
+                                    </div>
+                                    <div class="form-group">
+								        <label for="inputUsername" class="col-sm-4 control-label">Course 2</label>
+										<div class="col-sm-4"><select name="select2" class="form-control selectlist" id="select2"></select></div>
+                                    </div>
+                                    <div class="form-group">
+								        <label for="inputUsername" class="col-sm-4 control-label">Course 3</label>
+										<div class="col-sm-4"><select name="select3" class="form-control selectlist" id="select3"></select></div>
+                                    </div>
+                                    <div class="form-group">
+								        <label for="inputUsername" class="col-sm-4 control-label">Course 4</label>
+										<div class="col-sm-4"><select name="select4" class="form-control selectlist" id="select4"></select></div>
+                                    </div>
+                                    <div class="form-group">
+								        <label for="inputUsername" class="col-sm-4 control-label">Course 5</label>
+										<div class="col-sm-4"><select name="select5" class="form-control selectlist" id="select5"></select></div>
+                                    </div>
+                                    <div class="form-group">
+								        <label for="inputUsername" class="col-sm-4 control-label">Course 6</label>
+										<div class="col-sm-4"><select name="select6" class="form-control selectlist" id="select6"></select></div>
+                                    </div>
+                                    <div class="form-group">
+								        <label for="inputUsername" class="col-sm-4 control-label">Course 7</label>
+										<div class="col-sm-4"><select name="select7" class="form-control selectlist" id="select7"></select></div>
+                                    </div>
+								</div>
+								<div class="panel-footer">
+									<div class="form-group last" style="text-align:center">
+										<div class="col-sm-12">
+											<button type="submit" class="btn btn-success btn-sm">Register</button>&nbsp&nbsp&nbsp&nbsp&nbsp
+											<button type="reset" class="btn btn-default btn-sm">Reset</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+      <br>
+		<!-- end login -->
+		<script type="text/javascript" src="./scripts/bootstrap.min.js"></script>
+	</body>
+</html>
