@@ -6,6 +6,26 @@
 		<title>Login</title>
 		<link rel="stylesheet" href="css/register.css">
 		<link rel="stylesheet" href="./css/bootstrap.css">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+        $(document).ready(function() {
+                $('#form1').submit(function() {
+                        $.post("/login", $('#form1').serialize(), function(data, retstatus, xhr){
+                                var ct = xhr.getResponseHeader("content-type") || "";
+//                                alert(ct);
+                                if (ct.indexOf('json') > -1) {
+                                    $('#form1').trigger("reset");
+                                    alert(data);
+                                }
+                                else
+                                {
+                                    window.location.replace("/home");
+                                }
+                        });
+                        return false;
+              });
+        });
+</script>
 	</head>
 
 	<body onload="form1.reset()">
@@ -24,7 +44,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading"><span class="glyphicon glyphicon-lock"></span> Login</div>
 							<div class="panel-body">
-								<form id="form1" class="form-horizontal" role="form" method="POST" action="/login">
+								<form id="form1" class="form-horizontal" role="form" method="POST">
 									<div class="form-group">
 										<label for="inputUsername" class="col-sm-3 control-label">Username</label>
 										<div class="col-sm-9"><input name="username" type="text" class="form-control" id="inputUsername" placeholder="Username" required></div>

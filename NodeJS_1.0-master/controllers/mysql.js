@@ -95,12 +95,12 @@ var mysqlController = {
 						            res.redirect('/home');
 					            } 
 					            else {
-						            res.redirect('/login');
+						            res.json("incorrect password");
 					            }
                             });
 			            }
 			            else {
-				            res.redirect('/login');
+				            res.json("user not found");
 			            }
 		       });
 	       },
@@ -110,7 +110,7 @@ var mysqlController = {
 		        res.status(302).redirect("/login");
 	        },
 
-	home: function(req, res, next){
+	home: function(req, res){
 		res.sendFile("home.html", {root: "./views/"});
 	},
     
@@ -123,14 +123,15 @@ var mysqlController = {
 		req.session.lastPage = '/login';
 	},
 
-	register: function(req, res, next){
+	register: function(req, res){
+        console.log(req.body);
 		var username = req.body.username || "";
 		var password = req.body.password || "";
 		var specialization = req.body.specialization || "";
 
 		if (username == 'Username'){
-			res.send("Please input a valid username");
-			return;
+			res.json("Please input a valid username");
+		//	return;
 		}
         
         var query = mysql.format('select * from users where username = ?', [username]);
@@ -154,8 +155,39 @@ var mysqlController = {
                             console.log(err);
                             console.log(fs);
                         }
-                        res.send("Thanks for registering...");
                         });
+                       
+                        var count = 0;
+                        var mycount = 5;
+                        var list = [];
+                        list.push(req.body.username);
+                        for (var prop in req.body){
+                            if(req.body.hasOwnProperty(prop))
+                            {
+                                ++count;
+                            }
+                            if (count == mycount || count == mycount + 1 || count == mycount+2)
+                            {
+                                list.push(req.body[prop]);
+                                if (count == mycount + 2)
+                                {
+                                    console.log(count, mycount, list);
+                                    var query = mysql.format('insert into taken values (?, ?, ?, ?)', list);
+                                    config.connection.query(query, function(err, rows, fs) {
+                                        if(err) {
+                                            console.log('Something is broken');
+                                            console.log(err);
+                                            console.log(fs);
+                                        }
+                                    });
+                                    list = [];
+                                    list.push(req.body.username);
+                                    mycount = mycount + 3;
+                                }
+                            }
+                        }
+
+                        res.send("Thanks for registering...");
                     });
                 }
         });
