@@ -11,16 +11,37 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="scripts/operations.js"></script>
         <script>
         $(document).ready(function(){
-            var options = ["None","Intro To Info Security","Adv Operating Systems","Secure Computer Systems","Compiler Design","Applied Cryptography","Network Security","High Perform Comput Arch","Adv Software Engineering","Intro Enterprise Comput.","Database System Implemnt","Intro Health Informatics","Educ Tech-Foundations","Online Communities","Comp. Photography","Design& Analy-Algorithms","Advance Internet Comput","Info Security Policies","Info&Com Tech&Global Dev","Human-Computer Interact","Intro-Cognitive Science","Internet Arch& Protocols","Issues/Human-Center Comp","Ubiquitous Computing","Simulation of Biology","Approximation Algorithms","Game AI","Machine Learning","Deep Learning","Robot Intelli: Planning","Special Topics Adaptive Control and RL","Special Topics Blockchain and Cryptocurrencies","Special Topics Big Data and Society","Special Topics Continuous Algorithms","Special Topics Cyber-Phys Sys Design","Special Topics Human AI Interaction","Special Topics Interconnection Networks","Special Topics Inverse Uncertainty Quant","Special Topics Mobile Applications & Services","Special Topics Graphical Models in ML","Special Topics Robotics Motion Planning","Special Topics Systems Issues in Cloud Computing","Special Topics Statistical Machine Learning","Special Topics Sonification Lab R&D Studio","Special Topics Usable Privacy and Security","Intro to Grad Algorithms","Robotics Research Fnd I","Robotics Research Fnd II","Special Topics Data Visualization Prin & Appl"];
-
+            var options = ['None', 'Intro To Info Security','Adv Operating Systems','Secure Computer Systems','Compiler Design','Applied Cryptography','Network Security','High Perform Comput Arch','Adv Software Engineering','Intro Enterprise Comput.','Online Communities','Comp. Photography','Advance Internet Comput','Info Security Policies','Intro-Cognitive Science','Internet Arch& Protocols','Issues/Human-Center Comp','Ubiquitous Computing','Simulation of Biology','Game AI','Machine Learning','Database System Implemnt','Intro Health Informatics','Educ Tech-Foundations','Design& Analy-Algorithms','Info&Com Tech&Global Dev','Human-Computer Interact','Approximation Algorithms','Deep Learning','Robot Intelli: Planning','Special Topics Adaptive Control and RL','Special Topics Blockchain and Cryptocurrencies','Special Topics Big Data and Society','Special Topics Continuous Algorithms','Special Topics Cyber-Phys Sys Design','Special Topics Human AI Interaction','Special Topics Interconnection Networks','Special Topics Inverse Uncertainty Quant','Special Topics Mobile Applications & Services','Special Topics Graphical Models in ML','Special Topics Robotics Motion Planning','Special Topics Systems Issues in Cloud Computing','Special Topics Statistical Machine Learning','Special Topics Sonification Lab R&D Studio','Special Topics Usable Privacy and Security','Intro to Grad Algorithms','Robotics Research Fnd I','Robotics Research Fnd II','Special Topics Data Visualization Prin & Appl'];
+            
             $('.selectlist').empty();
-
             $.each(options, function(i, p) {
                 $('.selectlist').append($('<option></option>').val(p).html(p));
             });
-        });
+            
+            $('#form1').submit(function() {
+                $.post("/inputQuery", $('#form1').serialize(), function(data){
+                    var string1 = JSON.stringify(data);
+                    alert(string1);
+                    $('#form1').trigger("reset");
+                    $.each(result, function(key, val) {
+                        var th = $('<tr></tr>');
+                        var tr = $('<tr></tr>');
+                        $.each(val, function(k, v) {
+                            if(key == 0) {
+                                $('<th>'+k+'</th>').appendTo(th);
+                            }
+                            $('<td>'+v+'</td>').appendTo(tr);
+                        });		
+                        th.appendTo('#display');
+                        tr.appendTo('#display');
+                    });
+                return false;
+              });
+           });
+       });
 
         </script>
 
@@ -32,8 +53,11 @@
 				<div id="logo">
 					<a href="/home">
 						<img src="images/MongoWeb.png" width="80px" height="60px" alt="MongoWeb" /><br/>
-						<h1>MongoWeb</h1>
+						<h1>CoursePlanner</h1>
 					</a>
+				</div>
+				<div id="logout-button"> 
+			    		<a id="logout_link" href="/logout"><button type="button" class="btn btn-primary btn-lg">Logout</button></a>
 				</div>
 			</div>
 		</div>
@@ -47,15 +71,11 @@
 								<div class="panel-body">
 									<div class="form-group">
 										<label for="inputUsername" class="col-sm-4 control-label">Minimum Credits Required</label>
-										<div class="col-sm-4"><input name="credits" type="number" class="form-control" id="credits" min=3 max=21 placeholder="credits" required></div>
+										<div class="col-sm-4"><input name="credits" type="number" class="form-control" id="credits" min=3 max=21 step=3 placeholder="credits" required></div>
 									</div>
 									<div class="form-group">
 										<label for="inputUsername" class="col-sm-4 control-label">Desired Cumulative GPA</label>
 										<div class="col-sm-4"><input name="gpa" type="number" class="form-control" id="gpa" min=0 max=4 step=0.01 placeholder="gpa" required></div>
-									</div>
-									<div class="form-group">
-										<label for="inputUsername" class="col-sm-4 control-label">Graduating </label>
-										<div class="col-sm-1"><input class="form-control" name="graduation" type="checkbox" id="graduation" style="width: 20px; height: 20px" value=1></div>
 									</div>
                                     <hr>
 							        <div class="panel-heading col-sm-offset-1" style="font-size: 18px"><b>Courses:</b></div>
@@ -103,6 +123,9 @@
 				</div>
 			</div>
 		</div>
+      <div id="wrapper">
+         <table border='3' id="display" style="text-align: center; width: 1100px;"></table>	
+      </div>
 
       <br>
 		<!-- end login -->

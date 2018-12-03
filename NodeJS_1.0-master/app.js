@@ -48,6 +48,8 @@ app.get("/home", function(req, res, next) {
 });
 */
 
+
+
 app.get('/', function(req, res){
 		res.redirect("login");
 	});
@@ -55,11 +57,12 @@ app.get('/', function(req, res){
 //Serving pages
 app.get("/login", mysqlController.loginPage);
 app.get("/register", mysqlController.registerPage);
-app.get("/home", mysqlController.authenticate, mysqlController.home);
+//app.get("/home", mysqlController.authenticate, mysqlController.home);
+app.get("/home", mysqlController.home);
 
 //Posts
 app.post("/login", mysqlController.login);
-app.post("/logout", mysqlController.logout);
+app.get("/logout", mysqlController.logout);
 app.post("/register", mysqlController.register);
 
 app.get("/testPage", mysqlController.testPage);
