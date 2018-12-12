@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Register</title>
+		<title>Plan Schedule</title>
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Varela+Round">
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/register.css">
@@ -22,9 +22,10 @@
             });
             
             $('#form1').submit(function() {
-                $.post("/inputQuery", $('#form1').serialize(), function(data){
-                    var string1 = JSON.stringify(data);
-                    alert(string1);
+                jQuery('#wrapper').val("");
+/*                $.post("/inputQuery", $('#form1').serialize(), function(result){
+                    var string1 = JSON.stringify(result);
+//                    alert(string1);
                     $('#form1').trigger("reset");
                     $.each(result, function(key, val) {
                         var th = $('<tr></tr>');
@@ -39,7 +40,7 @@
                         tr.appendTo('#display');
                     });
                 return false;
-              });
+              });*/
            });
        });
 
@@ -61,6 +62,16 @@
 				</div>
 			</div>
 		</div>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Plan Schedule</a></li>
+                    <li><a href="/report">Progress Report</a></li>
+                    <li><a href="/update">Update Profile</a></li>
+                </ul>
+            </div>
+        </nav>
+
 		<div id="login">
 			<div class="container">
 				<div class="row">
@@ -123,11 +134,6 @@
 				</div>
 			</div>
 		</div>
-      <div id="wrapper">
-         <table border='3' id="display" style="text-align: center; width: 1100px;"></table>	
-      </div>
-
-      <br>
 		<!-- end login -->
 		<script type="text/javascript" src="./scripts/bootstrap.min.js"></script>
 	</body>

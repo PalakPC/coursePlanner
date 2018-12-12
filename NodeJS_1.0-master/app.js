@@ -8,47 +8,7 @@ var mysqlController = require("./controllers/mysql.js");
 var app = express();
 app.use(express.static(__dirname + "/views")); 
 
-//var connection = mysql.createConnection(config.dbOptions);
-//connection.connect();
-
 require("./config/express.js")(app, config);
-/*
-app.get('/', function(req, res) {
-   res.redirect("home");
-});
-
-app.get("/home", function(req, res, next) {
-   res.sendFile("home.html", {root: "./views/"});
-});
-*/
-/*app.get("/inputQuery", function(req, res) {
-   connection.query('create view newview as (select * from courses where prof = \'Gavrilovska\')', function(err, rows, fs) {
-      if(err) {
-         console.log('Something is broken');
-         console.log(err);
-         console.log(fs);
-      }
-   });
-   connection.query('select * from newview', function(err, rows, fs) {
-      if(err) {
-         console.log('Something is broken');
-         console.log(err);
-         console.log(fs);
-      }
-      console.log(rows);
-      res.json(rows);
-   });
-   connection.query('drop view newview', function(err, rows, fs) {
-      if(err) {
-         console.log('Something is broken');
-         console.log(err);
-         console.log(fs);
-      }
-   });
-});
-*/
-
-
 
 app.get('/', function(req, res){
 		res.redirect("login");
@@ -57,15 +17,22 @@ app.get('/', function(req, res){
 //Serving pages
 app.get("/login", mysqlController.loginPage);
 app.get("/register", mysqlController.registerPage);
-//app.get("/home", mysqlController.authenticate, mysqlController.home);
-app.get("/home", mysqlController.home);
+app.get("/update", mysqlController.authenticate, mysqlController.updatePage);
+app.get("/report", mysqlController.authenticate, mysqlController.reportPage);
+app.get("/home", mysqlController.authenticate, mysqlController.home);
+app.get("/result", mysqlController.authenticate, mysqlController.resultPage);
+//app.get("/home", mysqlController.home);
 
 //Posts
 app.post("/login", mysqlController.login);
 app.get("/logout", mysqlController.logout);
 app.post("/register", mysqlController.register);
+app.post("/update", mysqlController.update);
 
 app.get("/testPage", mysqlController.testPage);
+app.get("/reporter", mysqlController.reporter);
+app.get("/resulter", mysqlController.resulter);
+app.get("/reporter2", mysqlController.reporter2);
 
 app.post("/inputQuery", mysqlController.inputQuery);
 app.listen(config.SERVER_PORT);

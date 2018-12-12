@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en-US">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Update Profile</title>
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Varela+Round">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/register.css">
+		<link rel="stylesheet" href="./css/bootstrap.css">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script>
+        $(document).ready(function(){
+            var grade_options = ['', 'A', 'B', 'C', 'D', 'F'];
+            
+            $('.gselectlist').empty();
+            $.each(grade_options, function(i, p) {
+                $('.gselectlist').append($('<option></option>').val(p).html(p));
+            });
+
+            var prof_options = ['', 'Abowd','Ahamad','Ammar','Arkin','Arriaga','Anton','Aluru','Antonakakis','Abernethy','Arulraj','Bruckman','Balch','Blough','Boldyreva','Best','Bolter','Braunstein','Basole','Boots','Clark','Copeland','Conte','Chow','Chau','Chernova','Catalyurek','Chu','Dellaert','Dovrolis','Demillo','Disalvo','Dilkina','De Choudhury','DiSalvo','Essa','Edwards','Eisenhauer','Eisenstein','Esmaeilzadeh','Endert','Foley','Fortnow','Goel','Guzdial','Grinter','Gavrilovska','Coleman','Harris','Henneman','Hays','Howard','Hutchinson','Isbell','Jones','Moore','Kim','Kemp','Kim','Kumar','Krishna','Kira','Kolesnikov','Konte','Liu','Lipton','Lee','Lee','Liu','Li','Lee','McCracken','Mark','Mynatt','MacIntyre','Mihail','Moore','Magerko','McDaniel','Morgenstern','Navathe','Naik','Orso','Owen','Potts','Pu','Pande','Prvulovic','Pradalier','Peng','Ploetz','Ram','Ramachandran','Rossignac','Randall','Rehg','Riley','Riedl','Raghavendra','Schwan','Stasko','Starner','Sivakumar','Song','Sun','Sanders','Sweet','Simpkins','Saltaformaggio','Swire','Singh','Turk','Tannenbaum','Tetali','Vazirani','Venkateswaran','Vigoda','Vempala','Vuduc','Walker','Wolf','Weinberg','Wolf','Wilcox','Xu','Young','Zegura'];
+
+            $('.pselectlist').empty();
+            $.each(prof_options, function(i, p) {
+                $('.pselectlist').append($('<option></option>').val(p).html(p));
+            });
+
+
+
+    var next = 1;
+    $(".add-more").click(function(e){
+        e.preventDefault();
+        var addto = "#field" + next;
+        var addRemove = "#field" + (next);
+        next = next + 1;
+		var newIn = '<div id="field'+next+'"><label for="inputUsername" class="col-sm-1 col-sm-offset-1 control-label">Number </label><div class="col-sm-2"><input name="crn' + next + '" type="number" class="form-control" id="crn' + next + '" min=6000 max=9000 placeholder="crn"></div><label for="inputUsername" class="col-sm-1 control-label">Professor </label><div class="col-sm-3"><select name="prof' + next + '" class="form-control pselectlist" id="prof' + next + '"></select></div><label for="inputUsername" class="col-sm-1 control-label">Grade </label><div class="col-sm-1"><select name="grade' + next + '" class="form-control gselectlist" id="grade' + next + '" ></select></div></div>';
+        var newInput = $(newIn);
+        var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >-</button></div><div id="field">';
+        var removeButton = $(removeBtn);
+        $(addto).after(newInput);
+        $(addRemove).after(removeButton);
+        $("#field" + next).attr('data-source',$(addto).attr('data-source'));
+        $("#count").val(next);  
+    
+            $.each(prof_options, function(i, p) {
+                $('.pselectlist').append($('<option></option>').val(p).html(p));
+            });
+
+            $.each(grade_options, function(i, p) {
+                $('.gselectlist').append($('<option></option>').val(p).html(p));
+            });
+
+            $('.remove-me').click(function(e){
+                e.preventDefault();
+                var fieldNum = this.id.charAt(this.id.length-1);
+                var fieldID = "#field" + fieldNum;
+                $(this).remove();
+                $(fieldID).remove();
+            });
+    });    
+                $('#form1').submit(function() {
+                        $.post("/update", $('#form1').serialize(), function(data){
+                                alert(data);
+                                $('#form1').trigger("reset");
+                        });
+                        return false;
+              });
+});
+
+        </script>
+
+	</head>
+
+	<body onload="form1.reset();">
+		<div id="header">
+			<div id="headercenter">
+				<div id="logo">
+					<a href="/home">
+						<img src="images/MongoWeb.png" width="80px" height="60px" alt="MongoWeb" /><br/>
+						<h1>CoursePlanner</h1>
+					</a>
+				</div>
+				<div id="logout-button"> 
+			    		<a id="logout_link" href="/logout"><button type="button" class="btn btn-primary btn-lg">Logout</button></a>
+				</div>
+			</div>
+		</div>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a href="/home">Plan Schedule</a></li>
+                    <li><a href="/report">Progress Report</a></li>
+                    <li class="active"><a href="#">Update Profile</a></li>
+                </ul>
+            </div>
+        </nav>
+		<div id="login">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-md-offset-7" style="margin-left:3%">
+						<div class="panel panel-default">
+							<div class="panel-heading">Courses Taken</div>
+							<form id="form1" class="form-horizontal" role="form" method="POST">
+								<div class="panel-body">
+		                            <input type="hidden" name="count" value="1" />
+                                    <div class="form-group">
+                                            <div id="field">
+                                                <div id="field1">
+										            <label for="inputUsername" class="col-sm-1 control-label col-sm-offset-1">Number </label>
+										            <div class="col-sm-2"><input name="crn1" type="number" class="form-control" id="crn1" min=6000 max=9000 placeholder="crn"></div>
+										            <label for="inputUsername" class="col-sm-1 control-label">Professor </label>
+										            <div class="col-sm-3"><select name="prof1" class="form-control pselectlist" id="prof1"></select></div>
+										            <label for="inputUsername" class="col-sm-1 control-label">Grade </label>
+										            <div class="col-sm-1"><select name="grade1" class="form-control gselectlist" id="grade1" ></select></div>
+                                                </div>
+                                                <button id="b1" class="btn add-more" type="button">+</button>
+                                            </div>
+                                    </div>
+								</div>
+								<div class="panel-footer">
+									<div class="form-group last" style="text-align:center">
+										<div class="col-sm-12">
+											<button type="submit" class="btn btn-success btn-sm">Update</button>&nbsp&nbsp&nbsp&nbsp&nbsp
+											<button type="reset" class="btn btn-default btn-sm">Reset</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+      <br>
+		<!-- end login -->
+		<script type="text/javascript" src="./scripts/bootstrap.min.js"></script>
+	</body>
+</html>

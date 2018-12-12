@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en-US">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Progress Report</title>
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Varela+Round">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/register.css">
+		<link rel="stylesheet" href="./css/bootstrap.css">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="scripts/operations.js"></script>
+        <script>
+        $(document).ready(function(){ 
+                jQuery('#wrapper').val("");
+                jQuery('#wrapper2').val("");
+                var params = {
+                    query: jQuery('#input_query_box').val()
+                };
+                $.getJSON("/reporter", params, function(result){
+                    $.each(result, function(key, val) {
+                        var th = $('<tr></tr>');
+                        var tr = $('<tr></tr>');
+                        $.each(val, function(k, v) {
+                            if(key == 0) {
+                                $('<th>'+k+'</th>').appendTo(th);
+                            }
+                            $('<td>'+v+'</td>').appendTo(tr);
+                        });		
+                        th.appendTo('#display');
+                        tr.appendTo('#display');
+                    });
+                });
+
+                $.getJSON("/reporter2", params, function(result2){
+                    $('<b>GPA: '+result2+'</b>').appendTo('#display2');
+                });
+        });
+
+        </script>
+
+	</head>
+
+	<body>
+		<div id="header">
+			<div id="headercenter">
+				<div id="logo">
+					<a href="/home">
+						<img src="images/MongoWeb.png" width="80px" height="60px" alt="MongoWeb" /><br/>
+						<h1>CoursePlanner</h1>
+					</a>
+				</div>
+				<div id="logout-button"> 
+			    		<a id="logout_link" href="/logout"><button type="button" class="btn btn-primary btn-lg">Logout</button></a>
+				</div>
+			</div>
+		</div>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a href="/home">Plan Schedule</a></li>
+                    <li class="active"><a href="#">Progress Report</a></li>
+                    <li><a href="/update">Update Profile</a></li>
+                </ul>
+            </div>
+        </nav>
+
+		<div id="login">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9" style="margin-left:15%">
+						<div class="panel panel-default">
+							<div class="panel-heading">Report</div>
+								<div class="panel-body">
+                                        <div id="wrapper" align="center">
+                                            <table border='3' id="display" style="text-align: center; width: 500px"></table>	
+                                        </div>
+								</div>
+								<div class="panel-footer">
+									<div class="form-group last" style="text-align:center">
+										<div class="col-sm-12">
+                                            <div id="wrapper2">
+                                                <p border='3' id="display2" style="text-align: center;"></p>	
+                                            </div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end login -->
+		<script type="text/javascript" src="./scripts/bootstrap.min.js"></script>
+	</body>
+</html>

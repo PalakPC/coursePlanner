@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en-US">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Schedule</title>
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Varela+Round">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/register.css">
+		<link rel="stylesheet" href="./css/bootstrap.css">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="scripts/operations.js"></script>
+        <script>
+        $(document).ready(function(){ 
+                var params = {
+                    query: jQuery('#input_query_box').val()
+                };
+                var seq = 1;
+
+                if (seq == 1){
+                $.getJSON("/resulter", params, function(result1){
+                    if (result1.length != 0) {
+							$('<div class="panel-heading">Courses Already Taken:</div>').appendTo('#taken');
+                            var body = $('<div class="panel-body"></div>');
+                            var wrap = $('<div id="wrapper1" align="center"></div>');
+                            var table = $('<table border="3" id="display1" style="text-align: center; width: 500px"></table>');	
+                    $.each(result1, function(key, val) {
+                        var th = $('<tr></tr>');
+                        var tr = $('<tr></tr>');
+                        $.each(val, function(k, v) {
+                            if(key == 0) {
+                                $('<th>'+k+'</th>').appendTo(th);
+                            }
+                            $('<td>'+v+'</td>').appendTo(tr);
+                        });		
+                        th.appendTo(table);
+                        tr.appendTo(table);
+                        table.appendTo(wrap);
+                        wrap.appendTo(body)
+                        body.appendTo('#taken');
+                    });
+                    }
+                });
+                seq = seq + 1;
+                }
+
+                if (seq == 2){
+                $.getJSON("/resulter", params, function(result2){
+                    if (result2.length != 0) {
+							$('<div class="panel-heading">Clashing Courses:</div>').appendTo('#taken');
+                            var body = $('<div class="panel-body"></div>');
+                            var wrap = $('<div id="wrapper2" align="center"></div>');
+                            var table = $('<table border="3" id="display2" style="text-align: center; width: 500px"></table>');	
+                    $.each(result2, function(key, val) {
+                        var th = $('<tr></tr>');
+                        var tr = $('<tr></tr>');
+                        $.each(val, function(k, v) {
+                            if(key == 0) {
+                                $('<th>'+k+'</th>').appendTo(th);
+                            }
+                            $('<td>'+v+'</td>').appendTo(tr);
+                        });		
+                        th.appendTo(table);
+                        tr.appendTo(table);
+                        table.appendTo(wrap);
+                        wrap.appendTo(body)
+                        body.appendTo('#taken');
+                    });
+                    }
+                });
+                seq = seq+ 1;
+                }
+                
+                if (seq == 3){
+                $.getJSON("/resulter", params, function(result3){
+                    if (result3.length != 0) {
+							$('<div class="panel-heading">Recommended Courses:</div>').appendTo('#taken');
+                            var body = $('<div class="panel-body"></div>');
+                            var wrap = $('<div id="wrapper3" align="center"></div>');
+                            var table = $('<table border="3" id="display3" style="text-align: center; width: 500px"></table>');	
+                    $.each(result3, function(key, val) {
+                        var th = $('<tr></tr>');
+                        var tr = $('<tr></tr>');
+                        $.each(val, function(k, v) {
+                            if(key == 0) {
+                                $('<th>'+k+'</th>').appendTo(th);
+                            }
+                            $('<td>'+v+'</td>').appendTo(tr);
+                        });		
+                        th.appendTo(table);
+                        tr.appendTo(table);
+                        table.appendTo(wrap);
+                        wrap.appendTo(body)
+                        body.appendTo('#taken');
+                    });
+                    }
+                });
+                seq = seq + 1;
+                }
+                
+                if (seq == 4){
+                $.getJSON("/reporter2", params, function(result4){
+							var foot = $('<div class="panel-footer"><div class="form-group last" style="text-align:center"><div class="col-sm-12"><div id="wrapper4"><p border="3" id="display4" style="text-align: center;"></p></div></div></div></div>');	
+                            $('<b>Current GPA: '+result4+'</b>').appendTo(foot);
+                            foot.appendTo('#taken');
+                });
+                seq = seq + 1;
+                }
+                
+                if (seq == 5){
+                $.getJSON("/reporter2", params, function(result5){
+							var foot = $('<div class="panel-footer"><div class="form-group last" style="text-align:center"><div class="col-sm-12"><div id="wrapper5"><p border="3" id="display5" style="text-align: center;"></p></div></div></div></div>');	
+                            $('<b>Predicted GPA after semester: '+result5+'</b>').appendTo(foot);
+                            foot.appendTo('#taken');
+                });
+                }
+        });
+
+        </script>
+
+	</head>
+
+	<body>
+		<div id="header">
+			<div id="headercenter">
+				<div id="logo">
+					<a href="/home">
+						<img src="images/MongoWeb.png" width="80px" height="60px" alt="MongoWeb" /><br/>
+						<h1>CoursePlanner</h1>
+					</a>
+				</div>
+				<div id="logout-button"> 
+			    		<a id="logout_link" href="/logout"><button type="button" class="btn btn-primary btn-lg">Logout</button></a>
+				</div>
+			</div>
+		</div>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/home">Plan Schedule</a></li>
+                    <li><a href="/report">Progress Report</a></li>
+                    <li><a href="/update">Update Profile</a></li>
+                </ul>
+            </div>
+        </nav>
+
+		<div id="login">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9" style="margin-left:15%">
+						<div class="panel panel-default" id="taken">
+					    </div>
+				    </div>
+			    </div>
+		    </div>
+        </div>
+		<!-- end login -->
+		<script type="text/javascript" src="./scripts/bootstrap.min.js"></script>
+	</body>
+</html>

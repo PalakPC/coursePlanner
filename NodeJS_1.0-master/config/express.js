@@ -4,6 +4,7 @@ var session = require("express-session");
 var bodyParser = require("body-parser");
 
 module.exports = function(app, config){
+    app.set('view engine', 'ejs');
 	mysqlController.configure();
 	app.use(express.json());
 	app.use(bodyParser.urlencoded({extended: true}));
