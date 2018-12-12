@@ -13,6 +13,14 @@
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="scripts/operations.js"></script>
         <script>
+        function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
         $(document).ready(function(){ 
                 var params = {
                     query: jQuery('#input_query_box').val()
@@ -20,12 +28,12 @@
                 var seq = 1;
 
                 if (seq == 1){
-                $.getJSON("/resulter", params, function(result1){
+                $.getJSON("/resulter_taken", params, function(result1){
                     if (result1.length != 0) {
 							$('<div class="panel-heading">Courses Already Taken:</div>').appendTo('#taken');
                             var body = $('<div class="panel-body"></div>');
                             var wrap = $('<div id="wrapper1" align="center"></div>');
-                            var table = $('<table border="3" id="display1" style="text-align: center; width: 500px"></table>');	
+                            var table = $('<table border="3" id="display1" style="text-align: center; width: 750px"></table>');	
                     $.each(result1, function(key, val) {
                         var th = $('<tr></tr>');
                         var tr = $('<tr></tr>');
@@ -43,16 +51,17 @@
                     });
                     }
                 });
+                sleep(1000);
                 seq = seq + 1;
                 }
 
                 if (seq == 2){
-                $.getJSON("/resulter", params, function(result2){
+                $.getJSON("/resulter_clash", params, function(result2){
                     if (result2.length != 0) {
 							$('<div class="panel-heading">Clashing Courses:</div>').appendTo('#taken');
                             var body = $('<div class="panel-body"></div>');
                             var wrap = $('<div id="wrapper2" align="center"></div>');
-                            var table = $('<table border="3" id="display2" style="text-align: center; width: 500px"></table>');	
+                            var table = $('<table border="3" id="display2" style="text-align: center; width: 750px"></table>');	
                     $.each(result2, function(key, val) {
                         var th = $('<tr></tr>');
                         var tr = $('<tr></tr>');
@@ -70,16 +79,17 @@
                     });
                     }
                 });
+                sleep(1000);
                 seq = seq+ 1;
                 }
                 
                 if (seq == 3){
-                $.getJSON("/resulter", params, function(result3){
+                $.getJSON("/resulter_recommend", params, function(result3){
                     if (result3.length != 0) {
-							$('<div class="panel-heading">Recommended Courses:</div>').appendTo('#taken');
+							$('<div class="panel-heading">Recommended Courses (to improve GPA and specialization):</div>').appendTo('#taken');
                             var body = $('<div class="panel-body"></div>');
                             var wrap = $('<div id="wrapper3" align="center"></div>');
-                            var table = $('<table border="3" id="display3" style="text-align: center; width: 500px"></table>');	
+                            var table = $('<table border="3" id="display3" style="text-align: center; width: 750px"></table>');	
                     $.each(result3, function(key, val) {
                         var th = $('<tr></tr>');
                         var tr = $('<tr></tr>');
@@ -97,6 +107,7 @@
                     });
                     }
                 });
+                sleep(1000);
                 seq = seq + 1;
                 }
                 
@@ -106,11 +117,12 @@
                             $('<b>Current GPA: '+result4+'</b>').appendTo(foot);
                             foot.appendTo('#taken');
                 });
+                sleep(1000);
                 seq = seq + 1;
                 }
                 
                 if (seq == 5){
-                $.getJSON("/reporter2", params, function(result5){
+                $.getJSON("/reporter3", params, function(result5){
 							var foot = $('<div class="panel-footer"><div class="form-group last" style="text-align:center"><div class="col-sm-12"><div id="wrapper5"><p border="3" id="display5" style="text-align: center;"></p></div></div></div></div>');	
                             $('<b>Predicted GPA after semester: '+result5+'</b>').appendTo(foot);
                             foot.appendTo('#taken');
@@ -151,6 +163,7 @@
 				<div class="row">
 					<div class="col-md-9" style="margin-left:15%">
 						<div class="panel panel-default" id="taken">
+                        <div class="panel-heading"><b>Schedule Details</b> (Day code 1 signifies T-Th classes)</div>
 					    </div>
 				    </div>
 			    </div>

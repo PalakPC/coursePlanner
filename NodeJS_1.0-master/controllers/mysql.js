@@ -3,17 +3,26 @@ var config = require("../config/config.js");
 const bcrypt = require("bcrypt");
 
 var myfinalresponse;
+var specified = [];
+var filtered = [];
 var coursesAlreadyTaken;
+var clash;
+var thresholdA = 0;
+var thresholdB = 0;
+var counttillnow = 0;
+var sumtillnow = 0;
+var this_time_count = 0;
+
 var mysqlController = {
 
     inputQuery: function(req, res) {
                     var user_count = 0;
                     var spec_courses = [];
                     var final_list = [];
-                    var thresholdA = 0;
-                    var thresholdB = 0;
                     var total;
                     var old;
+                    specified = [];
+                    filtered = [];
                     
                     for (var prop in req.body)
                     {
@@ -22,6 +31,7 @@ var mysqlController = {
                             if (user_count >=2 && spec_courses.indexOf(req.body[prop]) <= -1)
                             {
                                 spec_courses.push(req.body[prop]);
+                                specified.push(req.body[prop]);
                             }
                             user_count++;
                         }
@@ -45,6 +55,7 @@ var mysqlController = {
                     user_count = user_count - 2;
                     var cr_count = req.body.credits / 3;
                     var count = cr_count > user_count ? cr_count : user_count;
+                    this_time_count = count;
                     var taken = [];
                     var string = req.session.username;
                     
@@ -101,6 +112,7 @@ var mysqlController = {
                                     }
                                 }
                                 resolve(spec_courses);
+                                filtered = spec_courses;
                             });
                         });
                     });
@@ -125,7 +137,7 @@ var mysqlController = {
                     var promise5 = new Promise(function(resolve, reject){
                     promise4.then(function(result) {
                         console.log("promise4");
-                        query = mysql.format('select distinct c.cname, c.gpa from newview c, newview s where c.cname != s.cname and c.Days = s.Days and c.start_time = s.start_time order by c.gpa desc');
+                        query = mysql.format('select distinct c.cname as c1, s.cname as c2, c.Days as days, c.start_time as time, c.gpa from newview c, newview s where c.cname != s.cname and c.Days = s.Days and c.start_time = s.start_time order by c.gpa desc');
                         config.connection.query(query, function(err, rows, fs) {
                             if(err) {
                                 reject(err);
@@ -133,9 +145,11 @@ var mysqlController = {
                                 console.log(err);
                                 console.log(fs);
                             }
+                            console.log(rows);
+                            clash = rows;
                             for (var i = 1; i < rows.length; ++i)
                             {
-                                var index = spec_courses.indexOf(rows[i].cname);
+                                var index = spec_courses.indexOf(rows[i].c1);
                                 if (index > -1)
                                 {
                                     spec_courses.splice(index, 1);
@@ -167,6 +181,7 @@ var mysqlController = {
                     promise6.then(function(result) {
                         console.log("promise6");
                         query = mysql.format('select * from newview1');
+                        spec_courses = [];
                         config.connection.query(query, function(err, rows, fs) {
                             if(err) {
                                 reject(err);
@@ -503,13 +518,80 @@ var mysqlController = {
                         console.log(err);
                         console.log(fs);
                     }
+                    counttillnow = rows[0].count;
+                    sumtillnow = rows[0].sum;
                     var gpa = (rows[0].sum / rows[0].count).toFixed(2);
                     res.json(gpa);
                   });
               },
-    resulter: function(req, res) {
+    reporter3: function(req, res) {
+                   var newcount = counttillnow + this_time_count;
+                   var newsum = sumtillnow;
+                   for (var i = 0; i < myfinalresponse.length; ++i)
+                   {
+                       if (myfinalresponse[i].gpa > thresholdA)
+                           newsum = newsum + 4;
+                       else if (myfinalresponse[i].gpa > thresholdB)
+                           newsum = newsum + 3;
+                       else
+                           newsum = newsum + 2;
+                   }
+                   var gpa = (newsum / newcount).toFixed(2);
+                    res.json(gpa);
+              },
+    resulter_recommend: function(req, res) {
                   console.log("here");  
                     res.json(myfinalresponse);
+              },
+    resulter_taken: function(req, res) {
+                  console.log("here");  
+                  answer = [];
+                  for (var i = 0; i < coursesAlreadyTaken.length; ++i)
+                  {
+                      var index = specified.indexOf(coursesAlreadyTaken[i].cname);
+                      if (index > -1)
+                      {
+                          answer.push(coursesAlreadyTaken[i]);
+                      }
+                  }
+                  for (var i = 0; i < answer.length; ++i)
+                  {
+                      delete answer[i].gpa;
+                  }
+
+                  res.json(answer);
+              },
+    resulter_clash: function(req, res) {
+                  console.log("here"); 
+                  for (var i = 0; i < clash.length; ++i)
+                  {
+                      delete clash[i].gpa;
+                  }
+                  var finalData = [];
+                  for (var i = 1; i < clash.length; ++i)
+                  {
+                      var newd = clash[i];
+                      var temp = newd.c1;
+                      newd.c1 = newd.c2;
+                      newd.c2 = temp;
+                      var index = false;
+                      for(var j = 0; j < finalData.length; ++j)
+                      {
+                          console.log(finalData[j]);
+                          if (finalData[j].c1 === newd.c1 && finalData[j].c2 === newd.c2)
+                          {
+                              index = true;
+                              break;
+                          }
+                      }
+
+                      if (index == false )
+                      {
+                          finalData.push(clash[i]);
+                      }
+                  }
+                  console.log(finalData);
+                    res.json(finalData);
               },
 };
 module.exports = mysqlController;

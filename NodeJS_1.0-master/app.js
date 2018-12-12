@@ -31,8 +31,11 @@ app.post("/update", mysqlController.update);
 
 app.get("/testPage", mysqlController.testPage);
 app.get("/reporter", mysqlController.reporter);
-app.get("/resulter", mysqlController.resulter);
+app.get("/resulter_taken", mysqlController.resulter_taken);
+app.get("/resulter_clash", mysqlController.resulter_clash);
+app.get("/resulter_recommend", mysqlController.resulter_recommend);
 app.get("/reporter2", mysqlController.reporter2);
+app.get("/reporter3", mysqlController.reporter3);
 
 app.post("/inputQuery", mysqlController.inputQuery);
 app.listen(config.SERVER_PORT);
